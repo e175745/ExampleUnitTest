@@ -19,8 +19,8 @@ public class LivingThing {
     public String getName(){ return name; }
 
     public void attack(LivingThing opponent){
-        if(dead != true) {
-            int damage = (int) (Math.random() * attack);
+        int damage = (int) (Math.random() * attack);
+        if(!isDead()) {
             System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, opponent.getName(), damage);
             opponent.wounded(damage);
         }
@@ -30,7 +30,7 @@ public class LivingThing {
         hitPoint -= damage;
         if( hitPoint < 0 ) {
             dead = true;
-            System.out.printf("%sは道半ばで力尽きてしまった。\n", name);
+            System.out.printf("モンスター%sは倒れた。\n", name);
         }
     }
 }
